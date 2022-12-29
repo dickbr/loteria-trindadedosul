@@ -2,7 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    API_CAIXA_URL: process.env.API_CAIXA_URL,
+    API_LOTERIA_URL: process.env.API_LOTERIA_URL,
+    API_LOTERIA_TOKEN: process.env.API_LOTERIA_TOKEN,
   }
 }
 

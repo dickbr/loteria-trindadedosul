@@ -1,43 +1,53 @@
 import axios from "axios";
-import https from 'https'
 
+export type LoteriaResponse = {
+    nome: string;
+    numero_concurso: number;
+    data_concurso: string;
+    data_concurso_milliseconds: number;
+    local_realizacao: string;
+    rateio_processamento: boolean;
+    acumulou: boolean;
+    valor_acumulado: number;
+    dezenas: string[];
+    premiacao: 
+        {
+            acertos: number;
+            nome: string;
+            quantidade_ganhadores: number;
+            valor_total: number;
+        }[]
+    local_ganhadores: string[];
+    arrecadacao_total: number;
+    concurso_proximo: number;
+    data_proximo_concurso: string;
+    data_proximo_concurso_milliseconds: number;
+    valor_estimado_proximo_concurso: number;
+    valor_acumulado_especial: number;
+    nome_acumulado_especial: string;
+    concurso_especial: boolean;
+}
 
-console.log({
-  url: process.env.API_CAIXA_URL
-})
 const api = axios.create({
-baseURL: process.env.API_CAIXA_URL,
-withCredentials: false,
- headers:{
-  'Content-Type': 'application/json',
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-  'Access-Control-Allow-Headers': "append,delete,entries,foreach,get,has,keys,set,values,Authorization",
- },
-  httpsAgent: new https.Agent({
-    rejectUnauthorized: false, 
-    keepAlive: true,
-    host: 'servicebus2.caixa.gov.br'
+    baseURL: process.env.API_LOTERIA_URL,
+    headers: { "Accept-Encoding": "gzip,deflate,compress" } ,
+    params: {
+      token: process.env.API_LOTERIA_TOKEN
+    },
   })
-})
 
-async function getLoteria(loteria: string): Promise<any> {  
-  
+
+async function getLoteria(loteria: string): Promise<LoteriaResponse | undefined> {  
   if(!loteria || loteria === "") return; 
+  
+  const { data } = await api.get<LoteriaResponse>('', {
+    params: {
+      loteria,
+    },
+  }); 
 
-  console.log('loteria**', loteria)
-
-  try{
-    const { data, request } = await api.get('lotomania'); 
-
-      console.log({ data })
-
-      return data
-  }catch(err: any){
-    console.log('err**', err)
-    throw err;
-    
-  }
+    return data
+  
  
 }
 

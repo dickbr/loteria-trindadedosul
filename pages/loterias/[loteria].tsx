@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Flex, Box, Heading } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 import LotomaniaImage from '../../assets/images/loterias/lotomania.png'
 import DuplasenaImage from '../../assets/images/loterias/dupla-sena.png'
 import LotofacilImage from '../../assets/images/loterias/lotofacil.png'
@@ -8,48 +8,28 @@ import QuinaImage from '../../assets/images/loterias/quina.png'
 import TimemaniaImage from '../../assets/images/loterias/timemania.png'
 import { useRouter } from 'next/router'
 import { getLoteria } from '../../services/api-caixa'
-import { useEffect, useState } from 'react'
+import { StaticImageData } from 'next/image'
+import { GetServerSideProps } from 'next'
 
-export default function Loteria() {
+type LoteriaData = {
+  accumulatedValue?: string;
+  contestNumber?: number;
+  contestDate?: string;
+}
+
+type LoteriaDataConfig = {
+  image: StaticImageData;
+  textColor: string;
+}
+
+type LoteriaProps = {
+  loteriaData: LoteriaData;
+  loteriaDataConfig: LoteriaDataConfig;
+}
+
+export default function Loteria({ loteriaData, loteriaDataConfig }: LoteriaProps) {
   const router = useRouter();
-
   const { loteria } = router.query;
-  const [result, setResult] = useState();
-  useEffect(() => {
-      console.log('lot', loteria)
-      getLoteria(loteria as string)
-        .then((data) => {
-          setResult(data)
-        })
-        .catch(console.log)
-  }, [loteria]) 
-  
-
-  let image;
-
-  switch (loteria) {
-    case 'lotomania':
-      image = LotomaniaImage;
-      break;
-    case 'duplasena':
-      image = DuplasenaImage;
-      break;
-    case 'lotofacil':
-      image = LotofacilImage;
-      break;
-    case 'megasena':
-      image = MegasenaImage;
-      break;
-    case 'quina':
-      image = QuinaImage;
-      break;
-    case 'timenaia':
-      image = TimemaniaImage;
-      break;
-    default:
-      image = LotomaniaImage;
-      break;
-  }
 
   return (
     <>
@@ -65,14 +45,150 @@ export default function Loteria() {
         position="absolute"
       >
           <Box
-            bgImage={image.src}
+            bgImage={loteriaDataConfig.image.src}
             h="100vh"
             bgSize="cover"
             bgPosition="center"
             position="relative"
           >
+              <Text 
+                color={loteriaDataConfig.textColor}
+                fontWeight="bold" 
+                fontFamily={'Branding SF Cnd'}
+                fontSize={'9xl'}
+                paddingLeft="13rem"
+                paddingTop="16.8rem"
+                position={'relative'}
+                id="accumulatedValue"
+                className="accumulatedValue"
+              >
+                {loteriaData.accumulatedValue}
+              </Text>
+              <Text
+                color={loteriaDataConfig.textColor}
+                fontWeight="bold"
+                fontFamily={'Branding SF Cnd'}
+                fontSize={'9xl'}
+                paddingLeft="13rem"
+                paddingTop="18.8rem"
+                position={'relative'}
+                id="accumulatedValue"
+                className="accumulatedValue"
+              >
+                Mil
+              </Text>
+              <Text
+                color={loteriaDataConfig.textColor}
+                fontWeight="bold"
+                fontSize={'5xl'}
+                paddingLeft="22rem"
+                paddingTop="55.4rem"
+                id="contestNumber"
+                className="contestNumber"
+                position={'absolute'}
+              >
+                {loteriaData.contestNumber}
+              </Text>
+              <Text
+                color={loteriaDataConfig.textColor}
+                fontWeight="bold"
+                fontSize={'5xl'}
+                paddingLeft="19rem"
+                paddingTop="59.7rem"
+                id="contestDate"
+                className="contestDate"
+                position={'absolute'}
+              >
+                {loteriaData.contestDate}
+              </Text>
           </Box>
       </Box>
     </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const loteria = ctx?.params?.loteria
+
+  const data = await getLoteria(loteria as string)
+
+  let loteriaDataConfig: LoteriaDataConfig;
+
+  switch (loteria) {
+    case 'lotomania':
+      loteriaDataConfig = {
+        image: LotomaniaImage,
+        textColor: '#fa6403',
+      };
+      break;
+    case 'duplasena':
+      loteriaDataConfig = {
+        image: DuplasenaImage,
+        textColor: 'whiteAlpha.900',
+      };
+      break;
+    case 'lotofacil':
+      loteriaDataConfig = {
+        image: LotofacilImage,
+        textColor: 'whiteAlpha.900',
+      };
+      break;
+    case 'megasena':
+      loteriaDataConfig = {
+        image: MegasenaImage,
+        textColor: 'whiteAlpha.900',
+      };
+      break;
+    case 'quina':
+      loteriaDataConfig = {
+        image: QuinaImage,
+        textColor: 'whiteAlpha.900',
+      };
+      break;
+    case 'timenaia':
+      loteriaDataConfig = {
+        image: TimemaniaImage,
+        textColor: 'whiteAlpha.900',
+      };
+      break;
+    default:
+      loteriaDataConfig = {
+        image: LotomaniaImage,
+        textColor: 'red.500',
+      };
+      break;
+  }
+
+  const accumulatedValue = data && data.valor_acumulado > 0
+    ? data?.valor_acumulado
+    : data?.valor_estimado_proximo_concurso
+
+  const value = accumulatedValue?.toLocaleString('pt-BR', {
+    maximumFractionDigits: 2,
+    minimumFractionDigits: 2
+  });
+
+  const aaa = value?.split('.')[0];
+
+  const aaaa = Number(aaa).toLocaleString('pt-BR', {
+    maximumFractionDigits: 0,
+    minimumFractionDigits: 0
+  });
+
+  const loteriaData: LoteriaData = {
+    accumulatedValue: aaaa,
+    contestDate: new Date(data?.data_concurso as string).toLocaleDateString('pt-BR', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }),
+    contestNumber: data?.numero_concurso
+  } 
+    
+  return {
+    props: {
+      loteriaData,
+      loteriaDataConfig
+    }
+  }
 }
