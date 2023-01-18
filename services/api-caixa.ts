@@ -40,7 +40,7 @@ const api = axios.create({
 async function getLoteria(loteria: string): Promise<LoteriaResponse | undefined> {  
   if(!loteria || loteria === "") return; 
   
-  const { data } = await api.get<LoteriaResponse>('', {
+  const { data } = await api.get<LoteriaResponse>('/app/resultado', {
     params: {
       loteria,
     },

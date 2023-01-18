@@ -13,6 +13,7 @@ import { GetServerSideProps } from 'next'
 
 type LoteriaData = {
   accumulatedValue?: string;
+  displayTextAccumulatedValue?: string;
   contestNumber?: number;
   contestDate?: string;
 }
@@ -55,9 +56,9 @@ export default function Loteria({ loteriaData, loteriaDataConfig }: LoteriaProps
                 color={loteriaDataConfig.textColor}
                 fontWeight="bold" 
                 fontFamily={'Branding SF Cnd'}
-                fontSize={'9xl'}
+                fontSize={'8xl'}
                 paddingLeft="13rem"
-                paddingTop="16.8rem"
+                paddingTop="11rem"
                 position={'relative'}
                 id="accumulatedValue"
                 className="accumulatedValue"
@@ -69,20 +70,19 @@ export default function Loteria({ loteriaData, loteriaDataConfig }: LoteriaProps
                 fontWeight="bold"
                 fontFamily={'Branding SF Cnd'}
                 fontSize={'9xl'}
-                paddingLeft="13rem"
-                paddingTop="18.8rem"
+                paddingLeft="7rem"
                 position={'relative'}
                 id="accumulatedValue"
                 className="accumulatedValue"
               >
-                Mil
+                {loteriaData.displayTextAccumulatedValue}
               </Text>
               <Text
                 color={loteriaDataConfig.textColor}
                 fontWeight="bold"
                 fontSize={'5xl'}
                 paddingLeft="22rem"
-                paddingTop="55.4rem"
+                paddingTop="8.4rem"
                 id="contestNumber"
                 className="contestNumber"
                 position={'absolute'}
@@ -94,7 +94,7 @@ export default function Loteria({ loteriaData, loteriaDataConfig }: LoteriaProps
                 fontWeight="bold"
                 fontSize={'5xl'}
                 paddingLeft="19rem"
-                paddingTop="59.7rem"
+                paddingTop="9.7rem"
                 id="contestDate"
                 className="contestDate"
                 position={'absolute'}
@@ -109,74 +109,35 @@ export default function Loteria({ loteriaData, loteriaDataConfig }: LoteriaProps
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const loteria = ctx?.params?.loteria
+  const no_cahe = ctx?.query?.no_cahe as string;
+
+  if(!(no_cahe === 'true')){
+    const invalidate_ttl = 60 * 60 * 1 // 1hours
+    ctx.res.setHeader(
+      'Cache-Control',
+      `public, s-maxage=10, stale-while-revalidate=${invalidate_ttl}`
+    )
+  }else{
+    ctx.res.setHeader(
+      'Cache-Control',
+      `Cache-Control: no-cache, no-store, max-age=0, must-revalidate`
+    )
+  }
 
   const data = await getLoteria(loteria as string)
 
-  let loteriaDataConfig: LoteriaDataConfig;
+  let loteriaDataConfig = getLoteriaDataConfig(loteria as string)
 
-  switch (loteria) {
-    case 'lotomania':
-      loteriaDataConfig = {
-        image: LotomaniaImage,
-        textColor: '#fa6403',
-      };
-      break;
-    case 'duplasena':
-      loteriaDataConfig = {
-        image: DuplasenaImage,
-        textColor: 'whiteAlpha.900',
-      };
-      break;
-    case 'lotofacil':
-      loteriaDataConfig = {
-        image: LotofacilImage,
-        textColor: 'whiteAlpha.900',
-      };
-      break;
-    case 'megasena':
-      loteriaDataConfig = {
-        image: MegasenaImage,
-        textColor: 'whiteAlpha.900',
-      };
-      break;
-    case 'quina':
-      loteriaDataConfig = {
-        image: QuinaImage,
-        textColor: 'whiteAlpha.900',
-      };
-      break;
-    case 'timenaia':
-      loteriaDataConfig = {
-        image: TimemaniaImage,
-        textColor: 'whiteAlpha.900',
-      };
-      break;
-    default:
-      loteriaDataConfig = {
-        image: LotomaniaImage,
-        textColor: 'red.500',
-      };
-      break;
-  }
-
-  const accumulatedValue = data && data.valor_acumulado > 0
+  const value = data && data.valor_acumulado > 0
     ? data?.valor_acumulado
     : data?.valor_estimado_proximo_concurso
 
-  const value = accumulatedValue?.toLocaleString('pt-BR', {
-    maximumFractionDigits: 2,
-    minimumFractionDigits: 2
-  });
-
-  const aaa = value?.split('.')[0];
-
-  const aaaa = Number(aaa).toLocaleString('pt-BR', {
-    maximumFractionDigits: 0,
-    minimumFractionDigits: 0
-  });
+  const accumulatedValue = getFormatedAccumulatedValue(value);
+  const displayTextAccumulatedValue = getDisplayTextAccumulatedValue(value);
 
   const loteriaData: LoteriaData = {
-    accumulatedValue: aaaa,
+    accumulatedValue,
+    displayTextAccumulatedValue,
     contestDate: new Date(data?.data_concurso as string).toLocaleDateString('pt-BR', {
       year: 'numeric',
       month: '2-digit',
@@ -190,5 +151,92 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       loteriaData,
       loteriaDataConfig
     }
+  }
+}
+
+const getFormatedAccumulatedValue = (accumulatedValue: number = 0): string => {
+  const value = accumulatedValue?.toLocaleString('pt-BR', {
+    maximumFractionDigits: 2,
+    minimumFractionDigits: 2,
+    currency: 'BLR'
+  });
+
+  const [first, second] = value.split('.');
+
+  return valueParsed(first, second);
+}
+
+const valueParsed = (value: string, complement?: string): string => {
+  if(value.length === 3){
+    return value;
+  }
+
+  if(value.length === 2){
+    const sliceValue = complement?.slice(0, 1);
+    return `${value},${sliceValue}`
+  }
+
+  if(value.length === 1){
+    const sliceValue = complement?.slice(0, 1);
+    return `${value},${sliceValue}`
+  }
+
+  return '';
+  
+}
+
+const getDisplayTextAccumulatedValue = (accumulatedValue: number = 0): string => {
+  const [ currency ] = accumulatedValue?.toString().split('.') as string[];
+  switch (currency.length) {
+    case 9:
+    case 8:
+    case 7:
+      return 'Milhões'
+    case 6:
+    case 5:
+    case 4:
+      return 'Mil'
+    default:
+      return ''
+  }
+}
+
+const getLoteriaDataConfig = (loteria: string): LoteriaDataConfig => {
+  switch (loteria) {
+  case 'lotomania':
+    return {
+      image: LotomaniaImage,
+      textColor: '#fa6403',
+    };
+  case 'duplasena':
+    return {
+      image: DuplasenaImage,
+      textColor: 'whiteAlpha.900',
+    };
+  case 'lotofacil':
+    return {
+      image: LotofacilImage,
+      textColor: 'whiteAlpha.900',
+    };
+  case 'megasena':
+    return {
+      image: MegasenaImage,
+      textColor: 'whiteAlpha.900',
+    };
+  case 'quina':
+    return {
+      image: QuinaImage,
+      textColor: 'whiteAlpha.900',
+    };
+  case 'timenaia':
+    return {
+      image: TimemaniaImage,
+      textColor: 'whiteAlpha.900',
+    };
+  default:
+    return {
+      image: LotomaniaImage,
+      textColor: 'red.500',
+    };
   }
 }
