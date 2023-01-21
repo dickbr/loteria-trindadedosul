@@ -40,7 +40,7 @@ export const getLoteriaDataConfig = (loteria: Loterias): LoteriaDataConfig => {
         image: QuinaImage,
         textColor: 'whiteAlpha.900'
       };
-    case 'timenaia':
+    case 'timemania':
       return {
         image: TimemaniaImage,
         textColor: 'whiteAlpha.900'
