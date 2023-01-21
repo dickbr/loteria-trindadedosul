@@ -1,10 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  env: {
-    API_LOTERIA_URL: process.env.API_LOTERIA_URL,
-    API_LOTERIA_TOKEN: process.env.API_LOTERIA_TOKEN,
-  }
-}
+  reactStrictMode: true
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

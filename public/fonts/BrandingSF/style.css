@@ -1,9 +1,0 @@
-@font-face {
-  font-family: 'Branding SF Cnd';
-  src: local('Branding SF Cnd Bold'), local('Branding-SF-Cnd-Bold'),
-    url('https://loteria-abiu.vercel.app/fonts/BrandingSF/BrandingSF-CndBold.woff2') format('woff2'),
-    url('https://loteria-abiu.vercel.app/fonts/BrandingSF/BrandingSF-CndBold.woff') format('woff'),
-    url('https://loteria-abiu.vercel.app/fonts/BrandingSF/BrandingSF-CndBold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
