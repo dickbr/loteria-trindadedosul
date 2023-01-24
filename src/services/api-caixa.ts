@@ -6,7 +6,7 @@ export enum EnumLoterias {
   'quina' = 'quina',
   'lotomania' = 'lotomania',
   'timemania' = 'timemania',
-  'duplasena' = 'dupla-sena',
+  'duplasena' = 'duplasena',
   'federal' = 'federal',
   'diadesorte' = 'diadesorte',
   'supersete' = 'supersete',

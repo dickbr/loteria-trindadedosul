@@ -9,16 +9,21 @@ import { styled } from '../../styles';
 
 const Container = styled('div', {
   display: 'flex',
-  justifyContent: 'center'
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: 10
 });
+
+type ConfigArray = Array<{
+  name: string;
+  color: string;
+  value: string;
+  contestDate: string;
+}>;
 
 type GameDayProps = {
   color: string;
-  data: {
-    name: string;
-    color: string;
-    value: string;
-  }[];
+  data: ConfigArray;
 };
 
 const GameDay: NextPage<GameDayProps> = ({ color, data }) => {
@@ -30,8 +35,12 @@ const GameDay: NextPage<GameDayProps> = ({ color, data }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <GameDayComponent games={data} color={color} />
+
+      <span>
+        * Valor estimado do próximo concurso a ser realizado em{' '}
+        {data[0].contestDate}
+      </span>
     </Container>
   );
 };
@@ -40,11 +49,7 @@ export default GameDay;
 
 export const getStaticProps: GetStaticProps = async () => {
   const lotoConfig = getLotoByDay();
-  const configArray: Array<{
-    name: string;
-    color: string;
-    value: string;
-  }> = [];
+  const configArray: ConfigArray = [];
 
   for (const gameDay of lotoConfig.data) {
     // eslint-disable-next-line no-await-in-loop
@@ -52,13 +57,20 @@ export const getStaticProps: GetStaticProps = async () => {
       gameDay.name as keyof typeof EnumLoterias
     );
 
+    const contestDate = new Intl.DateTimeFormat('pt-BR', {
+      month: '2-digit',
+      day: '2-digit',
+      year: 'numeric'
+    }).format(new Date(response.data_proximo_concurso));
+
     configArray.push({
       name: response.nome,
       color: gameDay.color,
-      value: response.valor_acumulado.toLocaleString('pt-BR', {
+      value: response.valor_estimado_proximo_concurso.toLocaleString('pt-BR', {
         style: 'currency',
         currency: 'BRL'
-      })
+      }),
+      contestDate
     });
   }
 
