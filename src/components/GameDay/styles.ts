@@ -5,6 +5,7 @@ export const Container = styled('div', {
   flexDirection: 'column',
   width: '100%',
   height: '100%',
+  maxWidth: 1280,
   padding: '0 2rem',
   alignItems: 'center',
   poition: 'relative',
@@ -27,5 +28,8 @@ export const Content = styled('div', {
 export const Wrapper = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  gap: '2rem'
+  gap: '1rem',
+  '@media only screen and (min-height: 721px)': {
+    gap: '2rem'
+  }
 });

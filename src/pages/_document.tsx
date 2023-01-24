@@ -1,12 +1,17 @@
 import React from 'react';
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
 import { getCssText } from '../styles';
+import { OG } from '../components/Meta/Og';
+import { Favicon } from '../components/Meta/Favicon';
 
 export default class Document extends NextDocument {
   render() {
     return (
       <Html lang="pt-BR">
         <Head>
+          <Favicon />
+
+          <OG />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"

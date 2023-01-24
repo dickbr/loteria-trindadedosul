@@ -4,9 +4,22 @@ export const Container = styled('div', {
   display: 'flex',
   flex: 1,
   background: '$orange500',
-  borderRadius: '40px',
+  borderRadius: '20px',
   padding: '0.7rem',
-  gap: '1rem'
+  gap: '1rem',
+  alignItems: 'center',
+  img: {
+    width: 55,
+    height: 53
+  },
+  '@media only screen and (min-height: 721px)': {
+    img: {
+      width: 100,
+      height: 96
+    },
+    borderRadius: '40px',
+    gap: '1rem'
+  }
 });
 
 export const Content = styled('div', {
@@ -32,13 +45,19 @@ export const Wrapper = styled('div', {
   alignItems: 'center',
 
   p: {
-    fontSize: '$8xl',
+    fontSize: '$2xl',
     fontWeight: 900,
     fontStyle: 'italic',
     '&:nth-child(2)': {
       fontStyle: 'normal',
       fontFamily: '$robotoFlex',
-      fontSize: '$6xl'
+      fontSize: '$xl'
+    },
+    '@media only screen and (min-height: 721px)': {
+      fontSize: '$8xl',
+      '&:nth-child(2)': {
+        fontSize: '$6xl'
+      }
     }
   }
 });

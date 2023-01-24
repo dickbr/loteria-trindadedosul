@@ -13,7 +13,7 @@ export const globalStyles = (color = '$violet500') => {
     },
     'body, html, #root': {
       minHeight: '100vh',
-      maxWidth: 1280,
+      // maxWidth: 1280,
       margin: '0 auto'
     },
     body: {

@@ -11,6 +11,8 @@ import { Loterias } from '../services/api-caixa';
 export type LoteriaDataConfig = {
   image: StaticImageData;
   textColor: string;
+  bgLeft: string;
+  bgRight: string;
 };
 
 export const getLoteriaDataConfig = (loteria: Loterias): LoteriaDataConfig => {
@@ -18,37 +20,51 @@ export const getLoteriaDataConfig = (loteria: Loterias): LoteriaDataConfig => {
     case 'lotomania':
       return {
         image: LotomaniaImage,
-        textColor: '#fa6403'
+        textColor: '#ea5105',
+        bgLeft: '#ffffff',
+        bgRight: '#ea5105'
       };
     case 'duplasena':
       return {
         image: DuplasenaImage,
-        textColor: 'whiteAlpha.900'
+        textColor: '#ffffff',
+        bgLeft: '#d0296c',
+        bgRight: '#9a003c'
       };
     case 'lotofacil':
       return {
         image: LotofacilImage,
-        textColor: 'whiteAlpha.900'
+        textColor: '#ffffff',
+        bgLeft: '#9C0E8E',
+        bgRight: '#D800DB'
       };
     case 'megasena':
       return {
         image: MegasenaImage,
-        textColor: 'whiteAlpha.900'
+        textColor: '#ffffff',
+        bgLeft: '#0c460e',
+        bgRight: '#10d808'
       };
     case 'quina':
       return {
         image: QuinaImage,
-        textColor: 'whiteAlpha.900'
+        textColor: '#ffffff',
+        bgLeft: '#3c268c',
+        bgRight: '#201156'
       };
     case 'timemania':
       return {
         image: TimemaniaImage,
-        textColor: 'whiteAlpha.900'
+        textColor: '#087507',
+        bgLeft: '#feee01',
+        bgRight: '#a7e508'
       };
     default:
       return {
         image: LotomaniaImage,
-        textColor: 'red.500'
+        textColor: '#ea5105',
+        bgLeft: '#ffffff',
+        bgRight: '#ea5105'
       };
   }
 };

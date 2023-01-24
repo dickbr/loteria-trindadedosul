@@ -18,7 +18,7 @@ export const Game: React.FC<GameProps> = ({ name, color, value }) => {
       <Image
         src={name.toLowerCase() === 'timemania' ? trevoVerde : trevo}
         alt="Trevo"
-        width={100}
+        width={55}
       />
 
       <Content>
