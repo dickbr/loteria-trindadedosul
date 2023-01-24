@@ -50,7 +50,7 @@ export const Wrapper = styled('div', {
     fontStyle: 'italic',
     '&:nth-child(2)': {
       fontStyle: 'normal',
-      fontFamily: '$robotoFlex',
+      fontFamily: '$default',
       fontSize: '$xl'
     },
     '@media only screen and (min-height: 721px)': {

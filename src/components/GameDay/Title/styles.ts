@@ -10,7 +10,7 @@ export const Container = styled('div', {
     fontSize: '$9xl',
     color: '$white',
     textTransform: 'uppercase',
-    fontFamily: '$robotoFlex',
+    fontFamily: '$default',
     fontWeight: 900
   },
   h2: {

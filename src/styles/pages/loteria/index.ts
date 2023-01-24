@@ -74,7 +74,7 @@ export const Body = styled('div', {
 export const Value = styled('h1', {
   fontSize: '4rem',
   fontWeight: 900,
-  fontFamily: '$robotoFlex',
+  fontFamily: '$default',
   '&:nth-child(1)': {
     fontSize: '8rem'
   },
