@@ -114,9 +114,9 @@ export const getStaticProps: GetStaticProps = async ctx => {
   const loteriaDataConfig = getLoteriaDataConfig(loteria);
 
   const value =
-    data && data.valor_acumulado > 0
-      ? data?.valor_acumulado
-      : data?.valor_estimado_proximo_concurso;
+    data && data.valor_estimado_proximo_concurso > 0
+      ? data?.valor_estimado_proximo_concurso
+      : data?.valor_acumulado;
 
   const accumulatedValue = getFormatedAccumulatedValue(value);
   const displayTextAccumulatedValue = getDisplayTextAccumulatedValue(value);
