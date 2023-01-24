@@ -50,7 +50,7 @@ export const getLoteriaDataConfig = (loteria: Loterias): LoteriaDataConfig => {
         image: QuinaImage,
         textColor: '#ffffff',
         bgLeft: '#3c268c',
-        bgRight: '#201156'
+        bgRight: '#26195B'
       };
     case 'timemania':
       return {
