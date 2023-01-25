@@ -11,7 +11,7 @@ const Home: NextPage = () => {
         <title>Loteria</title>
       </Head>
       <main style={{ position: 'absolute', width: '100vw', height: '100vh' }}>
-        <Image src={lotomania} alt="Loteria" fill />
+        <Image src={lotomania} alt="Loteria" fill priority />
       </main>
     </>
   );

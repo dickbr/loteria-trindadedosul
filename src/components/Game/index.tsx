@@ -19,6 +19,7 @@ export const Game: React.FC<GameProps> = ({ name, color, value }) => {
         src={name.toLowerCase() === 'timemania' ? trevoVerde : trevo}
         alt="Trevo"
         width={55}
+        priority
       />
 
       <Content>

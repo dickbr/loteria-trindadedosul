@@ -21,7 +21,7 @@ export const GameDay: React.FC<GameDayProps> = ({ games, color }) => {
 
   return (
     <Container>
-      <Image src={bgImage} alt="Imagem de background" />
+      <Image src={bgImage} alt="Imagem de background" priority />
       <Content>
         <Title />
 

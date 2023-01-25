@@ -55,7 +55,12 @@ const Loteria: NextPage<LoteriaProps> = ({
             style={{ background: `${loteriaDataConfig.bgRight}` }}
           />
           <div className="image-wrapper">
-            <Image src={loteriaDataConfig.image} alt="Background" fill />
+            <Image
+              src={loteriaDataConfig.image}
+              alt="Background"
+              fill
+              priority
+            />
           </div>
         </ImageContainer>
 
