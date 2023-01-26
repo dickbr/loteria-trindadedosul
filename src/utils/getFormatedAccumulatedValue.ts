@@ -1,19 +1,15 @@
 const valueParsed = (value: string, complement?: string): string => {
-  if (value.length === 3) {
-    return value;
-  }
+  const sliceValue = complement?.slice(0, 1);
 
-  if (value.length === 2) {
-    const sliceValue = complement?.slice(0, 1);
-    return `${value},${sliceValue}`;
+  switch (value.length) {
+    case 1:
+    case 2:
+      return sliceValue === '0' ? value : `${value},${sliceValue}`;
+    case 3:
+      return value;
+    default:
+      return value;
   }
-
-  if (value.length === 1) {
-    const sliceValue = complement?.slice(0, 1);
-    return `${value},${sliceValue}`;
-  }
-
-  return '';
 };
 
 export const getFormatedAccumulatedValue = (
