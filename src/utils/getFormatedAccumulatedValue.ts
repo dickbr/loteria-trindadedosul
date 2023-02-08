@@ -4,11 +4,11 @@ const valueParsed = (value: string, complement?: string): string => {
   switch (value.length) {
     case 1:
     case 2:
-      return sliceValue === '0' ? value : `${value},${sliceValue}`;
+      return sliceValue === '0' ? value : `${value}.${sliceValue}00`;
     case 3:
-      return value;
+      return `${value}`;
     default:
-      return value;
+      return `${value}`;
   }
 };
 
