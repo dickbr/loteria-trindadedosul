@@ -45,19 +45,15 @@ export const Wrapper = styled('div', {
   alignItems: 'center',
 
   p: {
-    fontSize: '$2xl',
+    fontSize: '$8xl',
     fontWeight: 900,
     fontStyle: 'italic',
     '&:nth-child(2)': {
       fontStyle: 'normal',
-      fontFamily: '$default',
-      fontSize: '$xl'
+      fontFamily: '$default'
     },
-    '@media only screen and (min-height: 721px)': {
-      fontSize: '$8xl',
-      '&:nth-child(2)': {
-        fontSize: '$6xl'
-      }
+    '@media only screen and (max-height: 721px)': {
+      fontSize: '$5xl'
     }
   }
 });
