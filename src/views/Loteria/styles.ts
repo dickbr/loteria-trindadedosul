@@ -1,4 +1,4 @@
-import { styled } from '../..';
+import { styled } from '../../styles';
 
 export const Container = styled('div', {
   display: 'flex',
@@ -46,52 +46,64 @@ export const Content = styled('div', {
   width: '50%',
   alignItems: 'center',
   justifyContent: 'center',
-  padding: '50px 0',
-  h2: {
-    fontWeight: 'bold',
-    fontSize: '2.5rem',
-    marginBottom: '2.5rem',
-    '@media only screen and (min-height: 721px)': {
-      marginBottom: '3rem',
-      fontSize: '3rem'
-    }
-  },
-  '@media only screen and (min-width: 1921px)': {
-    width: '62%'
-  }
+  padding: '50px 0'
 });
 
 export const Body = styled('div', {
   display: 'flex',
-  flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
   flex: 1,
   marginTop: '10rem',
-  marginBottom: '2rem'
+  marginBottom: '2rem',
+  paddingTop: '70px',
+  '@media only screen and (max-width: 1919px)': {
+    fontSize: '10rem',
+    marginTop: '8rem'
+  }
+});
+
+export const Currency = styled('span', {
+  fontSize: '6rem',
+  fontWeight: 900,
+  marginRight: '10px',
+  '@media only screen and (max-width: 1919px)': {
+    fontSize: '4rem'
+  }
 });
 
 export const Value = styled('h1', {
-  fontSize: '4rem',
+  fontSize: '17rem',
   fontWeight: 900,
   fontFamily: '$default',
-  '&:nth-child(1)': {
-    fontSize: '8rem'
-  },
-  '@media only screen and (min-height: 721px)': {
-    '&:nth-child(1)': {
-      fontSize: '11rem'
-    },
-    '&:nth-child(2)': {
-      fontSize: '7rem'
-    }
+  '@media only screen and (max-width: 1919px)': {
+    fontSize: '11rem'
   }
+});
+
+export const AccumulatedValueText = styled('h1', {
+  fontSize: '8rem',
+  fontWeight: 900,
+  fontFamily: '$default',
+  textTransform: 'lowercase',
+  verticalAlign: 'text-bottom',
+  height: '8rem'
 });
 
 export const Wrapper = styled('div', {
   display: 'flex',
   flexDirection: 'column',
+  alignItems: 'center',
   justifyContent: 'center',
+  h2: {
+    fontWeight: 'bold',
+    fontSize: '2rem',
+    marginBottom: '10px',
+    textAlign: 'center'
+  },
+  '@media only screen and (min-width: 1921px)': {
+    width: '62%'
+  },
   span: {
     textAlign: 'center',
     fontSize: '$3xl',

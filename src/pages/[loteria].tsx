@@ -2,34 +2,15 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { GetStaticProps, NextPage } from 'next';
 
-import Image from 'next/image';
 import { getLoteria, Loterias } from '../services/api-caixa';
+
+import { Loteria as LoteriaPage, LoteriaData, LoteriaProps } from '../views';
+
 import {
   getDisplayTextAccumulatedValue,
   getFormatedAccumulatedValue,
-  getLoteriaDataConfig,
-  LoteriaDataConfig
+  getLoteriaDataConfig
 } from '../utils';
-import {
-  Container,
-  Content,
-  ImageContainer,
-  Body,
-  Value,
-  Wrapper
-} from '../styles/pages/loteria';
-
-type LoteriaData = {
-  accumulatedValue?: string;
-  displayTextAccumulatedValue?: string;
-  contestNumber?: number;
-  contestDate?: string;
-};
-
-type LoteriaProps = {
-  loteriaData: LoteriaData;
-  loteriaDataConfig: LoteriaDataConfig;
-};
 
 const Loteria: NextPage<LoteriaProps> = ({
   loteriaData,
@@ -44,48 +25,10 @@ const Loteria: NextPage<LoteriaProps> = ({
         <title>{(loteria as string).toUpperCase()}</title>
       </Head>
 
-      <Container>
-        <ImageContainer>
-          <div
-            className="left-side"
-            style={{ background: `${loteriaDataConfig.bgLeft}` }}
-          />
-          <div
-            className="right-side"
-            style={{ background: `${loteriaDataConfig.bgRight}` }}
-          />
-          <div className="image-wrapper">
-            <Image
-              src={loteriaDataConfig.image}
-              alt="Background"
-              fill
-              priority
-            />
-          </div>
-        </ImageContainer>
-
-        <Content>
-          <Body>
-            <Value css={{ color: loteriaDataConfig.textColor }}>
-              R$ {loteriaData.accumulatedValue}
-            </Value>
-            <Value css={{ color: loteriaDataConfig.textColor }}>
-              {loteriaData.displayTextAccumulatedValue}
-            </Value>
-          </Body>
-          <h2 style={{ color: loteriaDataConfig.textColor }}>
-            compre nossos bolões!
-          </h2>
-          <Wrapper>
-            <span style={{ color: loteriaDataConfig.textColor }}>
-              Concurso: {loteriaData.contestNumber}
-            </span>
-            <span style={{ color: loteriaDataConfig.textColor }}>
-              Sorteio: {loteriaData.contestDate}
-            </span>
-          </Wrapper>
-        </Content>
-      </Container>
+      <LoteriaPage
+        loteriaData={loteriaData}
+        loteriaDataConfig={loteriaDataConfig}
+      />
     </>
   );
 };
