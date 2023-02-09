@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export enum EnumLoterias {
-  'megasena' = 'mega-sena',
+  'megasena' = 'megasena',
   'lotofacil' = 'lotofacil',
   'quina' = 'quina',
   'lotomania' = 'lotomania',
