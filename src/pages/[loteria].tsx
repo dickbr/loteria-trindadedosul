@@ -72,14 +72,13 @@ export const getStaticProps: GetStaticProps = async ctx => {
   const loteriaData: LoteriaData = {
     accumulatedValue,
     displayTextAccumulatedValue,
-    contestDate: new Date(data?.data_concurso as string).toLocaleDateString(
-      'pt-BR',
-      {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit'
-      }
-    ),
+    nextContestDate: new Date(
+      data?.data_proximo_concurso as string
+    ).toLocaleDateString('pt-BR', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }),
     contestNumber: data?.numero_concurso
   };
 
