@@ -79,7 +79,7 @@ export const getStaticProps: GetStaticProps = async ctx => {
       month: '2-digit',
       day: '2-digit'
     }),
-    contestNumber: data?.numero_concurso
+    nextContestNumber: data?.concurso_proximo
   };
 
   return {

@@ -16,7 +16,7 @@ import { LoteriaDataConfig } from '../../utils';
 export type LoteriaData = {
   accumulatedValue?: string;
   displayTextAccumulatedValue?: string;
-  contestNumber?: number;
+  nextContestNumber?: number;
   nextContestDate?: string;
 };
 
@@ -65,7 +65,7 @@ export const Loteria: React.FC<LoteriaProps> = ({
             compre nossos bolões!
           </h2>
           <span style={{ color: loteriaDataConfig.textColor }}>
-            Concurso: {loteriaData.contestNumber}
+            Próximo Concurso: {loteriaData.nextContestNumber}
           </span>
           <span style={{ color: loteriaDataConfig.textColor }}>
             Próximo Sorteio: {loteriaData.nextContestDate}
