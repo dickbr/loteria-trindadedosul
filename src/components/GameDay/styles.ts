@@ -8,7 +8,7 @@ export const Container = styled('div', {
   maxWidth: 1280,
   padding: '0 2rem',
   alignItems: 'center',
-  poition: 'relative',
+  position: 'relative',
   '>img': {
     position: 'absolute',
     maxWidth: '-webkit-fill-available',

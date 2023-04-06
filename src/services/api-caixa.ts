@@ -18,6 +18,7 @@ export type Loterias = keyof typeof EnumLoterias;
 
 export type LoteriaResponse = {
   nome: string;
+  nome_mes_sorte?: string;
   numero_concurso: number;
   data_concurso: string;
   data_concurso_milliseconds: number;
