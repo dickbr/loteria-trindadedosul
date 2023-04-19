@@ -26,8 +26,16 @@ export type LoteriaResponse = {
   rateio_processamento: boolean;
   acumulou: boolean;
   valor_acumulado: number;
+  trevosSorteados: number[];
   dezenas: string[];
+  dezenas_2?: string[];
   premiacao: {
+    acertos: number;
+    nome: string;
+    quantidade_ganhadores: number;
+    valor_total: number;
+  }[];
+  premiacao_2?: {
     acertos: number;
     nome: string;
     quantidade_ganhadores: number;
@@ -36,6 +44,7 @@ export type LoteriaResponse = {
   local_ganhadores: string[];
   arrecadacao_total: number;
   concurso_proximo: number;
+  nome_time_coracao: string;
   data_proximo_concurso: string;
   data_proximo_concurso_milliseconds: number;
   valor_estimado_proximo_concurso: number;
@@ -62,6 +71,8 @@ export const getLoteria = async (
       loteria
     }
   });
+
+  console.log(data);
 
   return data;
 };

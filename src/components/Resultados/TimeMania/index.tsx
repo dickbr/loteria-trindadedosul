@@ -15,32 +15,30 @@ import {
   Section
 } from '../styles';
 import { H1, H2, H3, Strong } from '../Texts';
-import { Text } from '../../Text';
+import { ContainerTrevos, ContentTrevos } from './styles';
 
-type DefaultProps = {
+type TimeManiaProps = {
   configs: ResultadosDataConfig;
-  loteria: string;
   arrayOfDezenas: number[][];
   dataConcurso: string;
   numero_concurso: number;
   valorAcumulado: string;
-  nome_mes_sorte?: string | null;
+  nome_time_coracao: string;
   premiacao: {
     acertos: number;
     nome: string;
     quantidade_ganhadores: number;
-    valor_total: string;
+    valor_total: number;
   }[];
 };
 
-export const Default: React.FC<DefaultProps> = props => {
+export const Timemania: React.FC<TimeManiaProps> = props => {
   const {
-    loteria,
     dataConcurso,
     numero_concurso,
     valorAcumulado,
     premiacao,
-    nome_mes_sorte,
+    nome_time_coracao,
     arrayOfDezenas,
     configs
   } = props;
@@ -67,51 +65,42 @@ export const Default: React.FC<DefaultProps> = props => {
 
               <H3>{valorAcumulado}</H3>
             </div>
-            {loteria === 'diadesorte' && (
-              <span
-                style={{
-                  textAlign: 'center',
-                  textShadow: '1px 1px 2px #000000'
-                }}
-              >
-                <Text as="strong" size="5xl" fontWheigt="bold">
-                  MÊS DA SORTE
-                </Text>
-
-                <br />
-
-                <Text as="strong" size="5xl" fontWheigt="bold">
-                  {nome_mes_sorte}
-                </Text>
-              </span>
-            )}
           </Section>
-          <table>
-            <tbody>
-              {arrayOfDezenas.map((container, index) => (
-                <DozenTr key={`${index * 3}`}>
-                  {container.map(dezena => (
-                    <DozenTd
-                      key={dezena}
-                      style={{ background: 'none', display: 'block' }}
-                    >
-                      <Circle
-                        css={{
-                          color: configs.color,
-                          boxShadow: `0px 0px 15px ${lighten(
-                            0.3,
-                            configs.color
-                          )}`
-                        }}
+          <div style={{ marginTop: '-20px', marginBottom: '-20px' }}>
+            <table>
+              <tbody>
+                {arrayOfDezenas.map((container, index) => (
+                  <DozenTr key={`${index * 3}`}>
+                    {container.map(dezena => (
+                      <DozenTd
+                        key={dezena}
+                        style={{ background: 'none', display: 'block' }}
                       >
-                        {dezena}
-                      </Circle>
-                    </DozenTd>
-                  ))}
-                </DozenTr>
-              ))}
-            </tbody>
-          </table>
+                        <Circle
+                          css={{
+                            color: configs.color,
+                            boxShadow: `0px 0px 15px ${lighten(
+                              0.3,
+                              configs.color
+                            )}`
+                          }}
+                        >
+                          {dezena}
+                        </Circle>
+                      </DozenTd>
+                    ))}
+                  </DozenTr>
+                ))}
+              </tbody>
+            </table>
+
+            <ContainerTrevos>
+              <span>Time do Coração:</span>
+              <ContentTrevos>
+                <p>{nome_time_coracao}</p>
+              </ContentTrevos>
+            </ContainerTrevos>
+          </div>
         </Article>
       </Main>
 
@@ -131,9 +120,7 @@ export const Default: React.FC<DefaultProps> = props => {
                   {item.acertos}
                 </Table.Td>
                 <Table.Td css={{ color: configs.color }}>
-                  {item.quantidade_ganhadores === 0
-                    ? 'não houve ganhadores'
-                    : item.quantidade_ganhadores}
+                  {item.quantidade_ganhadores}
                 </Table.Td>
                 <Table.Td css={{ color: configs.color }}>
                   {item.valor_total}

@@ -7,7 +7,16 @@ import MegasenaImage from '../assets/images/loterias/megasena.png';
 import QuinaImage from '../assets/images/loterias/quina.png';
 import TimemaniaImage from '../assets/images/loterias/timemania.png';
 
-import LotofacilCartaoAposta from '../assets/images/lotofacil.png';
+import LotofacilCartaoAposta from '../assets/images/resultados/lotofacil.png';
+import DiaDeSorteCartaoAposta from '../assets/images/resultados/diadesorte.png';
+import DuplasenaCartaoAposta from '../assets/images/resultados/duplasena.png';
+import FederalCartaoAposta from '../assets/images/resultados/federal.png';
+import LotecaCartaoAposta from '../assets/images/resultados/loteca.png';
+import LotomaniaCartaoAposta from '../assets/images/resultados/lotomania.png';
+import MaismilionariaCartaoAposta from '../assets/images/resultados/maismilionaria.png';
+import MegaCartaoAposta from '../assets/images/resultados/mega.png';
+import QuinaCartaoAposta from '../assets/images/resultados/quina.png';
+import TimemaniaCartaoAposta from '../assets/images/resultados/timemania.png';
 
 import { Loterias } from '../services/api-caixa';
 
@@ -29,7 +38,7 @@ export const getResultadosDataConfig = (
   switch (loteria) {
     case 'lotomania':
       return {
-        image: LotofacilCartaoAposta,
+        image: LotomaniaCartaoAposta,
         color: '#f5964f'
       };
     case 'lotofacil':
@@ -39,33 +48,43 @@ export const getResultadosDataConfig = (
       };
     case 'megasena':
       return {
-        image: LotofacilCartaoAposta,
+        image: MegaCartaoAposta,
         color: '#019b61'
       };
     case 'maismilionaria':
       return {
-        image: LotofacilCartaoAposta,
+        image: MaismilionariaCartaoAposta,
         color: '#1893b2'
       };
     case 'diadesorte':
       return {
-        image: LotofacilCartaoAposta,
+        image: DiaDeSorteCartaoAposta,
         color: '#dfb912'
       };
     case 'duplasena':
       return {
-        image: LotofacilCartaoAposta,
+        image: DuplasenaCartaoAposta,
         color: '#bb174d'
       };
     case 'federal':
       return {
-        image: LotofacilCartaoAposta,
+        image: FederalCartaoAposta,
         color: '#0079ac'
       };
     case 'quina':
       return {
-        image: LotofacilCartaoAposta,
+        image: QuinaCartaoAposta,
         color: '#535a9d'
+      };
+    case 'timemania':
+      return {
+        image: TimemaniaCartaoAposta,
+        color: '#087507'
+      };
+    case 'loteca':
+      return {
+        image: LotecaCartaoAposta,
+        color: '#E9463F'
       };
     default:
       return {

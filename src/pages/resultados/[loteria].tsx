@@ -10,17 +10,28 @@ import { Resultados } from '../../views';
 
 type LotofacilProps = {
   configs: ResultadosDataConfig;
-  arrayOfDezenas: number[][];
+  arrayOfDezenas: number[][] | string[];
+  arrayOfDezenas2?: number[][] | string[] | null;
   dataConcurso: string;
   nome_mes_sorte?: string | null;
   numero_concurso: number;
   valorAcumulado: string;
+  nome_time_coracao?: string;
+  trevosSorteados?: number[];
   premiacao: {
     acertos: number;
     nome: string;
     quantidade_ganhadores: number;
     valor_total: string;
   }[];
+  premiacao2?:
+    | {
+        acertos: number;
+        nome: string;
+        quantidade_ganhadores: number;
+        valor_total: string;
+      }[]
+    | null;
   loteria: string;
 };
 
@@ -64,10 +75,15 @@ export const getStaticProps: GetStaticProps = async (
 
   const {
     dezenas,
+    dezenas_2,
     data_concurso,
     numero_concurso,
+    nome_time_coracao,
     premiacao,
+    premiacao_2,
+    trevosSorteados,
     valor_acumulado,
+    valor_estimado_proximo_concurso,
     nome_mes_sorte
   } = await getLoteria(loteria);
 
@@ -95,7 +111,22 @@ export const getStaticProps: GetStaticProps = async (
     };
   });
 
-  const valorAcumulado = convertToBRLCurrency.format(valor_acumulado);
+  const newPremiacao2 =
+    premiacao_2 &&
+    premiacao_2.flatMap(item => {
+      return {
+        ...item,
+        valor_total: convertToBRLCurrency.format(item.valor_total)
+      };
+    });
+
+  const valorAcumulado = () => {
+    if (valor_acumulado && valor_acumulado !== 0) {
+      return convertToBRLCurrency.format(valor_acumulado);
+    }
+
+    return convertToBRLCurrency.format(valor_estimado_proximo_concurso);
+  };
 
   const dataConcurso = new Date(data_concurso as string).toLocaleDateString(
     'pt-BR',
@@ -108,12 +139,16 @@ export const getStaticProps: GetStaticProps = async (
 
   return {
     props: {
-      arrayOfDezenas,
+      nome_time_coracao: nome_time_coracao ?? null,
+      trevosSorteados: trevosSorteados ?? null,
+      arrayOfDezenas: loteria === 'duplasena' ? dezenas : arrayOfDezenas,
+      arrayOfDezenas2: loteria === 'duplasena' ? dezenas_2 : null,
       dataConcurso,
       numero_concurso,
       nome_mes_sorte: nome_mes_sorte ?? null,
       premiacao: newPremiacao,
-      valorAcumulado,
+      premiacao2: newPremiacao2 ?? null,
+      valorAcumulado: valorAcumulado(),
       loteria,
       configs
     },

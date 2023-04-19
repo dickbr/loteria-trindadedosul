@@ -38,8 +38,8 @@ export const Header = styled('header', {
 export const Image = styled(ImageNext, {
   position: 'absolute',
   opacity: 0.5,
-  left: 0,
-  height: 'auto',
+  left: -25,
+  bottom: 0,
   zIndex: -1
 });
 
