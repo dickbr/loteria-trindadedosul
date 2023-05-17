@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { lighten } from 'polished';
 import { ResultadosDataConfig } from '../../../utils';
 import { Circle } from '../../Circle';
@@ -14,10 +14,11 @@ import {
   Main,
   Section
 } from '../styles';
-import { H1, H2, H3, Strong } from '../Texts';
+import { H3, Strong } from '../Texts';
 import { Text } from '../../Text';
+import { css } from '../../../styles';
 
-type DefaultProps = {
+type LotomaniaProps = {
   configs: ResultadosDataConfig;
   loteria: string;
   arrayOfDezenas: number[][];
@@ -33,7 +34,41 @@ type DefaultProps = {
   }[];
 };
 
-export const Default: React.FC<DefaultProps> = props => {
+const TextCss = css(Text);
+
+export const H1 = ({ children }: { children: ReactNode }) => {
+  return (
+    <Text
+      as="h1"
+      size="3xl"
+      className={TextCss({
+        css: {
+          display: 'inherit',
+          alignItems: 'center'
+        }
+      })}
+    >
+      {children}
+    </Text>
+  );
+};
+
+export const H2 = ({ children }: { children: ReactNode }) => {
+  return (
+    <Text
+      as="h2"
+      size="xl"
+      fontWheigt="bold"
+      css={{
+        textAlign: 'center'
+      }}
+    >
+      {children}
+    </Text>
+  );
+};
+
+export const Lotomania: React.FC<LotomaniaProps> = props => {
   const {
     loteria,
     dataConcurso,

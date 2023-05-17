@@ -2,18 +2,8 @@
 import React from 'react';
 import { lighten } from 'polished';
 import { ResultadosDataConfig } from '../../../utils';
-import { Circle } from '../../Circle';
 import { Table } from '../../Table';
-import {
-  Article,
-  Container,
-  DozenTd,
-  DozenTr,
-  Header,
-  Image,
-  Main,
-  Section
-} from '../styles';
+import { Article, Container, Header, Image, Main, Section } from '../styles';
 import { H1, H2, H3, Strong } from '../Texts';
 import { Pill, PillContainer, PillContent } from './styles';
 

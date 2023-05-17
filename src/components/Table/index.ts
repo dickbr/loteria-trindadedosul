@@ -33,12 +33,9 @@ const Th = styled('th', {
   alignItems: 'center',
   justifyContent: 'center',
   background: '$white',
-  fontSize: '$3xl',
+  fontSize: '$xl',
   color: '$violet500',
   fontWeight: '$bold'
-  // '@bp4': {
-  //   fontSize: '$3xl'
-  // }
 });
 
 const Td = styled('td', {
@@ -47,11 +44,8 @@ const Td = styled('td', {
   alignItems: 'center',
   justifyContent: 'center',
   background: '$white',
-  fontSize: '$3xl',
+  fontSize: '$xl',
   color: '$violet500'
-  // '@bp4': {
-  //   fontSize: '$3xl'
-  // }
 });
 
 export const Table = { Root, THead, TBody, Td, Th, Tr };

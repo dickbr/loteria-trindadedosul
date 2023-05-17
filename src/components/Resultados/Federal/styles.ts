@@ -3,14 +3,18 @@ import { styled } from '../../../styles';
 export const PillContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  gap: 20
+  'div + div': {
+    marginTop: 15
+  }
 });
 
 export const PillContent = styled('div', {
   display: 'flex',
   alignItems: 'center',
-  gap: 25,
-  fontSize: '$2xl'
+  fontSize: '$2xl',
+  span: {
+    marginRight: 25
+  }
 });
 
 export const Pill = styled('div', {
@@ -20,7 +24,7 @@ export const Pill = styled('div', {
   borderRadius: '99999px',
   background: '#fff',
   padding: '1rem',
-  fontSize: '$4xl',
+  fontSize: '$3xl',
   fontWeight: 'bold',
   width: '400px'
 });

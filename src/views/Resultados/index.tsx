@@ -10,6 +10,7 @@ import {
   MaisMilionaria,
   Timemania
 } from '../../components/Resultados';
+import { Lotomania } from '../../components/Resultados/Lotomania';
 
 export type ResultadosProps = {
   loteria: string;
@@ -25,6 +26,9 @@ const RenderResultado = ({ loteria, ...rest }: any) => {
 
     case 'maismilionaria':
       return <MaisMilionaria {...rest} />;
+
+    case 'lotomania':
+      return <Lotomania {...rest} />;
 
     case 'timemania':
       return <Timemania {...rest} />;
