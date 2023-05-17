@@ -2,7 +2,6 @@
 /* eslint-disable no-restricted-syntax */
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { ResultadosDataConfig } from '../../utils';
 import {
   Default,
   DuplaSena,
