@@ -19,7 +19,8 @@ export const Main = styled('main', {
   justifyContent: 'center',
   maxWidth: '1280px',
   padding: '59px 30px',
-  flex: 1
+  flex: 1,
+  margin: '0 auto'
 });
 
 export const Footer = styled('footer', {
