@@ -9,6 +9,7 @@ import {
   Container,
   DozenTd,
   DozenTr,
+  Footer,
   Header,
   Image,
   Main,
@@ -115,34 +116,40 @@ export const Default: React.FC<DefaultProps> = props => {
         </Article>
       </Main>
 
-      <footer>
+      <Footer>
         <Table.Root>
           <Table.THead>
             <Table.Tr>
-              <Table.Th css={{ color: configs.color }}>ACERTOS</Table.Th>
-              <Table.Th css={{ color: configs.color }}>GANHADORES</Table.Th>
-              <Table.Th css={{ color: configs.color }}>PRÊMIO</Table.Th>
+              <Table.Th css={{ color: configs.color, fontSize: '$l' }}>
+                ACERTOS
+              </Table.Th>
+              <Table.Th css={{ color: configs.color, fontSize: '$l' }}>
+                GANHADORES
+              </Table.Th>
+              <Table.Th css={{ color: configs.color, fontSize: '$l' }}>
+                PRÊMIO
+              </Table.Th>
             </Table.Tr>
           </Table.THead>
           <Table.TBody>
             {premiacao.map(item => (
               <Table.Tr key={item.valor_total}>
-                <Table.Td css={{ color: configs.color }}>
+                <Table.Td css={{ color: configs.color, fontSize: '$l' }}>
                   {item.acertos}
                 </Table.Td>
-                <Table.Td css={{ color: configs.color }}>
+                <Table.Td css={{ color: configs.color, fontSize: '$l' }}>
                   {item.quantidade_ganhadores === 0
                     ? 'não houve ganhadores'
                     : item.quantidade_ganhadores}
                 </Table.Td>
-                <Table.Td css={{ color: configs.color }}>
+                <Table.Td css={{ color: configs.color, fontSize: '$l' }}>
                   {item.valor_total}
                 </Table.Td>
               </Table.Tr>
             ))}
           </Table.TBody>
         </Table.Root>
-      </footer>
+      </Footer>
     </Container>
   );
 };

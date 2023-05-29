@@ -15,7 +15,6 @@ import {
   Section
 } from '../styles';
 import { H1, H2, H3, Strong } from '../Texts';
-import { Text } from '../../Text';
 import { ContainerTrevos, ContentTrevos } from './styles';
 
 type MaisMilionariaProps = {
@@ -102,9 +101,10 @@ export const MaisMilionaria: React.FC<MaisMilionariaProps> = props => {
                   <Circle
                     key={trevo}
                     css={{
-                      width: 80,
-                      height: 80,
+                      width: 70,
+                      height: 70,
                       color: configs.color,
+                      fontSize: '$l',
                       boxShadow: `0px 0px 15px ${lighten(0.3, configs.color)}`
                     }}
                   >
@@ -121,19 +121,27 @@ export const MaisMilionaria: React.FC<MaisMilionariaProps> = props => {
         <Table.Root>
           <Table.THead>
             <Table.Tr>
-              <Table.Th css={{ color: configs.color }}>FAIXAS</Table.Th>
-              <Table.Th css={{ color: configs.color }}>GANHADORES</Table.Th>
-              <Table.Th css={{ color: configs.color }}>PRÊMIO</Table.Th>
+              <Table.Th css={{ color: configs.color, fontSize: '$l' }}>
+                FAIXAS
+              </Table.Th>
+              <Table.Th css={{ color: configs.color, fontSize: '$l' }}>
+                GANHADORES
+              </Table.Th>
+              <Table.Th css={{ color: configs.color, fontSize: '$l' }}>
+                PRÊMIO
+              </Table.Th>
             </Table.Tr>
           </Table.THead>
           <Table.TBody>
             {premiacao.map(item => (
               <Table.Tr key={item.valor_total}>
-                <Table.Td css={{ color: configs.color }}>{item.faixa}</Table.Td>
-                <Table.Td css={{ color: configs.color }}>
+                <Table.Td css={{ color: configs.color, fontSize: '$l' }}>
+                  {item.faixa}
+                </Table.Td>
+                <Table.Td css={{ color: configs.color, fontSize: '$l' }}>
                   {item.quantidade_ganhadores}
                 </Table.Td>
-                <Table.Td css={{ color: configs.color }}>
+                <Table.Td css={{ color: configs.color, fontSize: '$l' }}>
                   {item.valor_total}
                 </Table.Td>
               </Table.Tr>

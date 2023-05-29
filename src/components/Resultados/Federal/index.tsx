@@ -69,19 +69,27 @@ export const Federal: React.FC<FederalProps> = props => {
         <Table.Root>
           <Table.THead>
             <Table.Tr>
-              <Table.Th css={{ color: configs.color }}>ACERTOS</Table.Th>
-              <Table.Th css={{ color: configs.color }}>BILHETE</Table.Th>
-              <Table.Th css={{ color: configs.color }}>PRÊMIO</Table.Th>
+              <Table.Th css={{ color: configs.color, fontSize: '26px' }}>
+                ACERTOS
+              </Table.Th>
+              <Table.Th css={{ color: configs.color, fontSize: '26px' }}>
+                BILHETE
+              </Table.Th>
+              <Table.Th css={{ color: configs.color, fontSize: '26px' }}>
+                PRÊMIO
+              </Table.Th>
             </Table.Tr>
           </Table.THead>
           <Table.TBody>
             {premiacao.map(item => (
               <Table.Tr key={item.valor_total}>
-                <Table.Td css={{ color: configs.color }}>{item.nome}</Table.Td>
-                <Table.Td css={{ color: configs.color }}>
+                <Table.Td css={{ color: configs.color, fontSize: '26px' }}>
+                  {item.nome}
+                </Table.Td>
+                <Table.Td css={{ color: configs.color, fontSize: '26px' }}>
                   {item.bilhete}
                 </Table.Td>
-                <Table.Td css={{ color: configs.color }}>
+                <Table.Td css={{ color: configs.color, fontSize: '26px' }}>
                   {item.valor_total}
                 </Table.Td>
               </Table.Tr>

@@ -11,7 +11,7 @@ export const PillContainer = styled('div', {
 export const PillContent = styled('div', {
   display: 'flex',
   alignItems: 'center',
-  fontSize: '$2xl',
+  fontSize: '$xl',
   span: {
     marginRight: 25
   }
@@ -23,8 +23,8 @@ export const Pill = styled('div', {
   justifyContent: 'center',
   borderRadius: '99999px',
   background: '#fff',
-  padding: '1rem',
-  fontSize: '$3xl',
+  padding: '10px',
+  fontSize: '$l',
   fontWeight: 'bold',
   width: '400px'
 });

@@ -157,38 +157,64 @@ export const DuplaSena: React.FC<DuplaSenaProps> = props => {
         <Table.Root>
           <Table.THead>
             <Table.Tr>
-              <Table.Th css={{ color: configs.color }}>ACERTOS</Table.Th>
-              <Table.Th css={{ color: configs.color }}>GANHADORES</Table.Th>
-              <Table.Th css={{ color: configs.color }}>PRÊMIO</Table.Th>
-              <Table.Th css={{ color: configs.color }}>ACERTOS</Table.Th>
-              <Table.Th css={{ color: configs.color }}>GANHADORES</Table.Th>
-              <Table.Th css={{ color: configs.color }}>PRÊMIO</Table.Th>
+              <Table.Th css={{ color: configs.color, fontSize: '24px' }}>
+                ACERTOS
+              </Table.Th>
+              <Table.Th css={{ color: configs.color, fontSize: '24px' }}>
+                GANHADORES
+              </Table.Th>
+              <Table.Th css={{ color: configs.color, fontSize: '24px' }}>
+                PRÊMIO
+              </Table.Th>
+              <Table.Th css={{ color: configs.color, fontSize: '24px' }}>
+                ACERTOS
+              </Table.Th>
+              <Table.Th css={{ color: configs.color, fontSize: '24px' }}>
+                GANHADORES
+              </Table.Th>
+              <Table.Th css={{ color: configs.color, fontSize: '24px' }}>
+                PRÊMIO
+              </Table.Th>
             </Table.Tr>
           </Table.THead>
           <Table.TBody>
             {premiacao.map((item, index) => (
               <Table.Tr key={item.valor_total}>
-                <Table.Td css={{ color: configs.color }}>
+                <Table.Td css={{ color: configs.color, fontSize: '24px' }}>
                   {item.acertos}
                 </Table.Td>
-                <Table.Td css={{ color: configs.color }}>
+                <Table.Td
+                  css={{
+                    color: configs.color,
+                    fontSize: `${
+                      item.quantidade_ganhadores === 0 ? '20px' : '24px'
+                    }`
+                  }}
+                >
                   {item.quantidade_ganhadores === 0
                     ? 'não houve ganhadores'
                     : item.quantidade_ganhadores}
                 </Table.Td>
-                <Table.Td css={{ color: configs.color }}>
+                <Table.Td css={{ color: configs.color, fontSize: '24px' }}>
                   {item.valor_total}
                 </Table.Td>
 
-                <Table.Td css={{ color: configs.color }}>
+                <Table.Td css={{ color: configs.color, fontSize: '24px' }}>
                   {premiacao2[index].acertos}
                 </Table.Td>
-                <Table.Td css={{ color: configs.color }}>
+                <Table.Td
+                  css={{
+                    color: configs.color,
+                    fontSize: `${
+                      item.quantidade_ganhadores === 0 ? '20px' : '24px'
+                    }`
+                  }}
+                >
                   {premiacao2[index].quantidade_ganhadores === 0
                     ? 'não houve ganhadores'
                     : item.quantidade_ganhadores}
                 </Table.Td>
-                <Table.Td css={{ color: configs.color }}>
+                <Table.Td css={{ color: configs.color, fontSize: '24px' }}>
                   {premiacao2[index].valor_total}
                 </Table.Td>
               </Table.Tr>

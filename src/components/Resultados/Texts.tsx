@@ -8,7 +8,7 @@ export const H1 = ({ children }: { children: ReactNode }) => {
   return (
     <Text
       as="h1"
-      size="4xl"
+      size="xl"
       className={TextCss({
         css: {
           display: 'inherit',
@@ -25,7 +25,7 @@ export const H2 = ({ children, ...rest }: { children: ReactNode }) => {
   return (
     <Text
       as="h2"
-      size="2xl"
+      size="l"
       fontWheigt="bold"
       css={{
         textAlign: 'center'
@@ -41,7 +41,7 @@ export const H3 = ({ children }: { children: ReactNode }) => {
   return (
     <Text
       as="h3"
-      size="8xl"
+      size="5xl"
       fontWheigt="bold"
       className={TextCss({
         css: {
@@ -58,7 +58,7 @@ export const Strong = ({ children }: { children: ReactNode }) => {
   return (
     <Text
       as="strong"
-      size="4xl"
+      size="2xl"
       className={TextCss({
         css: {
           marginLeft: 5

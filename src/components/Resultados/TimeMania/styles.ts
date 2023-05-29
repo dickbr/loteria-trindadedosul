@@ -5,15 +5,15 @@ export const ContainerTrevos = styled('div', {
   marginTop: 40,
   flexDirection: 'column',
   alignItems: 'center',
-  gap: 15,
+  marginBottom: 15,
   span: {
-    fontSize: '$4xl'
+    fontSize: '$xl'
   }
 });
 
 export const ContentTrevos = styled('div', {
   display: 'flex',
-  gap: 15,
-  fontSize: '$5xl',
-  fontWeight: 'bold'
+  fontSize: '$4xl',
+  fontWeight: 'bold',
+  marginBottom: 15
 });

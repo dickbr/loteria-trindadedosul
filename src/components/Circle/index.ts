@@ -1,12 +1,12 @@
 import { styled } from '../../styles';
 
 export const Circle = styled('div', {
-  width: 85,
-  height: 85,
+  width: 70,
+  height: 70,
   borderRadius: 99999,
   background: '$white',
   fontWeight: '$bold',
-  fontSize: '$4xl',
+  fontSize: '$2xl',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
