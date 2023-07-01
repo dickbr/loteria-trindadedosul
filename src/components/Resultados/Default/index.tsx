@@ -56,7 +56,16 @@ export const Default: React.FC<DefaultProps> = props => {
       </Header>
 
       <Main>
-        <Image src={configs.image} alt="Imagem cartela" height={500} />
+        {loteria === 'diadesorte' ? (
+          <Image
+            src={configs.image}
+            alt="Imagem cartela"
+            height={500}
+            style={{ bottom: 'inherit', top: 60 }}
+          />
+        ) : (
+          <Image src={configs.image} alt="Imagem cartela" height={500} />
+        )}
         <Article>
           <Section>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -75,13 +84,13 @@ export const Default: React.FC<DefaultProps> = props => {
                   textShadow: '1px 1px 2px #000000'
                 }}
               >
-                <Text as="strong" size="4xl" fontWheigt="bold">
+                <Text as="strong" size="2xl" fontWheigt="bold">
                   MÊS DA SORTE
                 </Text>
 
                 <br />
 
-                <Text as="strong" size="4xl" fontWheigt="bold">
+                <Text as="strong" size="xl" fontWheigt="bold">
                   {nome_mes_sorte}
                 </Text>
               </span>

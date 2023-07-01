@@ -13,7 +13,7 @@ export const PillContent = styled('div', {
   alignItems: 'center',
   fontSize: '$xl',
   span: {
-    marginRight: 25
+    marginRight: 18
   }
 });
 

@@ -57,7 +57,7 @@ export const H2 = ({ children }: { children: ReactNode }) => {
   return (
     <Text
       as="h2"
-      size="xl"
+      size="l"
       fontWheigt="bold"
       css={{
         textAlign: 'center'
@@ -100,7 +100,7 @@ export const Lotomania: React.FC<LotomaniaProps> = props => {
                 PRÓXIMO SORTEIO
               </H2>
 
-              <H3>{valorAcumulado}</H3>
+              <H3 size="4xl">{valorAcumulado}</H3>
             </div>
             {loteria === 'diadesorte' && (
               <span
@@ -132,6 +132,9 @@ export const Lotomania: React.FC<LotomaniaProps> = props => {
                     >
                       <Circle
                         css={{
+                          fontSize: '$xl',
+                          width: 60,
+                          height: 60,
                           color: configs.color,
                           boxShadow: `0px 0px 15px ${lighten(
                             0.3,
@@ -154,13 +157,13 @@ export const Lotomania: React.FC<LotomaniaProps> = props => {
         <Table.Root>
           <Table.THead>
             <Table.Tr>
-              <Table.Th css={{ color: configs.color, fontSize: '$l' }}>
+              <Table.Th css={{ color: configs.color, fontSize: '1.3rem' }}>
                 ACERTOS
               </Table.Th>
-              <Table.Th css={{ color: configs.color, fontSize: '$l' }}>
+              <Table.Th css={{ color: configs.color, fontSize: '1.3rem' }}>
                 GANHADORES
               </Table.Th>
-              <Table.Th css={{ color: configs.color, fontSize: '$l' }}>
+              <Table.Th css={{ color: configs.color, fontSize: '1.3rem' }}>
                 PRÊMIO
               </Table.Th>
             </Table.Tr>
@@ -168,15 +171,15 @@ export const Lotomania: React.FC<LotomaniaProps> = props => {
           <Table.TBody>
             {premiacao.map(item => (
               <Table.Tr key={item.valor_total}>
-                <Table.Td css={{ color: configs.color, fontSize: '$l' }}>
+                <Table.Td css={{ color: configs.color, fontSize: '1.3rem' }}>
                   {item.acertos}
                 </Table.Td>
-                <Table.Td css={{ color: configs.color, fontSize: '$l' }}>
+                <Table.Td css={{ color: configs.color, fontSize: '1.3rem' }}>
                   {item.quantidade_ganhadores === 0
                     ? 'não houve ganhadores'
                     : item.quantidade_ganhadores}
                 </Table.Td>
-                <Table.Td css={{ color: configs.color, fontSize: '$l' }}>
+                <Table.Td css={{ color: configs.color, fontSize: '1.3rem' }}>
                   {item.valor_total}
                 </Table.Td>
               </Table.Tr>

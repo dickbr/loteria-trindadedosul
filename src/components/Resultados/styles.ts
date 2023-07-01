@@ -8,8 +8,7 @@ export const Container = styled('div', {
   padding: 10,
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'space-between',
-  background: 'red !important'
+  justifyContent: 'space-between'
 });
 
 export const Main = styled('main', {

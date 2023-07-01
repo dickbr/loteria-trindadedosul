@@ -50,9 +50,11 @@ export const Federal: React.FC<FederalProps> = props => {
           <PillContainer>
             {premiacao.map(item => (
               <PillContent key={item.faixa}>
-                <span>{item.faixa}º</span>
+                <span style={{ fontSize: 24 }}>{item.faixa}º</span>
                 <Pill
                   style={{
+                    fontSize: 24,
+                    padding: '6px',
                     color: configs.color,
                     boxShadow: `0px 0px 15px ${lighten(0.3, configs.color)}`
                   }}
@@ -69,13 +71,13 @@ export const Federal: React.FC<FederalProps> = props => {
         <Table.Root>
           <Table.THead>
             <Table.Tr>
-              <Table.Th css={{ color: configs.color, fontSize: '26px' }}>
+              <Table.Th css={{ color: configs.color, fontSize: '20px' }}>
                 ACERTOS
               </Table.Th>
-              <Table.Th css={{ color: configs.color, fontSize: '26px' }}>
+              <Table.Th css={{ color: configs.color, fontSize: '20px' }}>
                 BILHETE
               </Table.Th>
-              <Table.Th css={{ color: configs.color, fontSize: '26px' }}>
+              <Table.Th css={{ color: configs.color, fontSize: '20px' }}>
                 PRÊMIO
               </Table.Th>
             </Table.Tr>
@@ -83,13 +85,13 @@ export const Federal: React.FC<FederalProps> = props => {
           <Table.TBody>
             {premiacao.map(item => (
               <Table.Tr key={item.valor_total}>
-                <Table.Td css={{ color: configs.color, fontSize: '26px' }}>
+                <Table.Td css={{ color: configs.color, fontSize: '20px' }}>
                   {item.nome}
                 </Table.Td>
-                <Table.Td css={{ color: configs.color, fontSize: '26px' }}>
+                <Table.Td css={{ color: configs.color, fontSize: '20px' }}>
                   {item.bilhete}
                 </Table.Td>
-                <Table.Td css={{ color: configs.color, fontSize: '26px' }}>
+                <Table.Td css={{ color: configs.color, fontSize: '20px' }}>
                   {item.valor_total}
                 </Table.Td>
               </Table.Tr>

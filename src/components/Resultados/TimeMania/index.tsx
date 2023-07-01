@@ -63,7 +63,7 @@ export const Timemania: React.FC<TimeManiaProps> = props => {
                 PRÓXIMO SORTEIO
               </H2>
 
-              <H3>{valorAcumulado}</H3>
+              <H3 size="2xl">{valorAcumulado}</H3>
             </div>
           </Section>
           <div style={{ marginTop: '-20px', marginBottom: '-20px' }}>
@@ -74,11 +74,17 @@ export const Timemania: React.FC<TimeManiaProps> = props => {
                     {container.map(dezena => (
                       <DozenTd
                         key={dezena}
-                        style={{ background: 'none', display: 'block' }}
+                        style={{
+                          background: 'none',
+                          display: 'block'
+                        }}
                       >
                         <Circle
                           css={{
+                            height: 60,
+                            width: 60,
                             color: configs.color,
+                            fontSize: 30,
                             boxShadow: `0px 0px 15px ${lighten(
                               0.3,
                               configs.color
@@ -95,9 +101,9 @@ export const Timemania: React.FC<TimeManiaProps> = props => {
             </table>
 
             <ContainerTrevos>
-              <span>Time do Coração:</span>
+              <span style={{ fontSize: 26 }}>Time do Coração:</span>
               <ContentTrevos>
-                <p>{nome_time_coracao}</p>
+                <p style={{ fontSize: 34 }}>{nome_time_coracao}</p>
               </ContentTrevos>
             </ContainerTrevos>
           </div>

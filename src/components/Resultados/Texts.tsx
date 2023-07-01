@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { css } from '../../styles';
+import { css, config } from '../../styles';
 import { Text } from '../Text';
 
 const TextCss = css(Text);
@@ -37,11 +37,17 @@ export const H2 = ({ children, ...rest }: { children: ReactNode }) => {
   );
 };
 
-export const H3 = ({ children }: { children: ReactNode }) => {
+export const H3 = ({
+  children,
+  size = '5xl'
+}: {
+  children: ReactNode;
+  size?: keyof typeof config.theme.fontSizes;
+}) => {
   return (
     <Text
       as="h3"
-      size="5xl"
+      size={size}
       fontWheigt="bold"
       className={TextCss({
         css: {
