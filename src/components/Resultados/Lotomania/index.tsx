@@ -133,8 +133,8 @@ export const Lotomania: React.FC<LotomaniaProps> = props => {
                       <Circle
                         css={{
                           fontSize: '$xl',
-                          width: 60,
-                          height: 60,
+                          width: 50,
+                          height: 50,
                           color: configs.color,
                           boxShadow: `0px 0px 15px ${lighten(
                             0.3,
@@ -157,13 +157,13 @@ export const Lotomania: React.FC<LotomaniaProps> = props => {
         <Table.Root>
           <Table.THead>
             <Table.Tr>
-              <Table.Th css={{ color: configs.color, fontSize: '1.3rem' }}>
+              <Table.Th css={{ color: configs.color, fontSize: '18px' }}>
                 ACERTOS
               </Table.Th>
-              <Table.Th css={{ color: configs.color, fontSize: '1.3rem' }}>
+              <Table.Th css={{ color: configs.color, fontSize: '18px' }}>
                 GANHADORES
               </Table.Th>
-              <Table.Th css={{ color: configs.color, fontSize: '1.3rem' }}>
+              <Table.Th css={{ color: configs.color, fontSize: '18px' }}>
                 PRÊMIO
               </Table.Th>
             </Table.Tr>
@@ -171,15 +171,15 @@ export const Lotomania: React.FC<LotomaniaProps> = props => {
           <Table.TBody>
             {premiacao.map(item => (
               <Table.Tr key={item.valor_total}>
-                <Table.Td css={{ color: configs.color, fontSize: '1.3rem' }}>
+                <Table.Td css={{ color: configs.color, fontSize: '18px' }}>
                   {item.acertos}
                 </Table.Td>
-                <Table.Td css={{ color: configs.color, fontSize: '1.3rem' }}>
+                <Table.Td css={{ color: configs.color, fontSize: '18px' }}>
                   {item.quantidade_ganhadores === 0
                     ? 'não houve ganhadores'
                     : item.quantidade_ganhadores}
                 </Table.Td>
-                <Table.Td css={{ color: configs.color, fontSize: '1.3rem' }}>
+                <Table.Td css={{ color: configs.color, fontSize: '18px' }}>
                   {item.valor_total}
                 </Table.Td>
               </Table.Tr>

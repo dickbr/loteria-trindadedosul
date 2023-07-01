@@ -114,13 +114,13 @@ export const Timemania: React.FC<TimeManiaProps> = props => {
         <Table.Root>
           <Table.THead>
             <Table.Tr>
-              <Table.Th css={{ color: configs.color, fontSize: '$l' }}>
+              <Table.Th css={{ color: configs.color, fontSize: 20 }}>
                 ACERTOS
               </Table.Th>
-              <Table.Th css={{ color: configs.color, fontSize: '$l' }}>
+              <Table.Th css={{ color: configs.color, fontSize: 20 }}>
                 GANHADORES
               </Table.Th>
-              <Table.Th css={{ color: configs.color, fontSize: '$l' }}>
+              <Table.Th css={{ color: configs.color, fontSize: 20 }}>
                 PRÊMIO
               </Table.Th>
             </Table.Tr>
@@ -128,13 +128,13 @@ export const Timemania: React.FC<TimeManiaProps> = props => {
           <Table.TBody>
             {premiacao.map(item => (
               <Table.Tr key={item.valor_total}>
-                <Table.Td css={{ color: configs.color, fontSize: '$l' }}>
+                <Table.Td css={{ color: configs.color, fontSize: 20 }}>
                   {item.acertos}
                 </Table.Td>
-                <Table.Td css={{ color: configs.color, fontSize: '$l' }}>
+                <Table.Td css={{ color: configs.color, fontSize: 20 }}>
                   {item.quantidade_ganhadores}
                 </Table.Td>
-                <Table.Td css={{ color: configs.color, fontSize: '$l' }}>
+                <Table.Td css={{ color: configs.color, fontSize: 20 }}>
                   {item.valor_total}
                 </Table.Td>
               </Table.Tr>

@@ -67,12 +67,12 @@ export const DozenTr = styled('tr', {
   display: 'flex',
   justifyContent: 'center',
   '&+tr': {
-    marginTop: 18
+    marginTop: 16
   }
 });
 
 export const DozenTd = styled('td', {
   '&+td': {
-    marginLeft: 18
+    marginLeft: 16
   }
 });

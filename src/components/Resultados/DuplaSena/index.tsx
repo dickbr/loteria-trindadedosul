@@ -74,9 +74,9 @@ export const DuplaSena: React.FC<DuplaSenaProps> = props => {
             </div>
           </Section>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 50 }}>
-            <div>
-              <Text size="4xl" style={{ marginBottom: 20 }}>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ marginBottom: 50 }}>
+              <Text size="xl" style={{ marginBottom: 20 }}>
                 1º Sorteio
               </Text>
 
@@ -85,15 +85,18 @@ export const DuplaSena: React.FC<DuplaSenaProps> = props => {
                   style={{
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: 15
+                    justifyContent: 'center'
                   }}
                 >
                   {arrayOfDezenas.map((dezena, index) => (
                     <DozenTr key={`${index * 3}`} style={{ marginTop: 0 }}>
                       <DozenTd
                         key={dezena}
-                        style={{ background: 'none', display: 'block' }}
+                        style={{
+                          background: 'none',
+                          display: 'block',
+                          marginLeft: 10
+                        }}
                       >
                         <Circle
                           css={{
@@ -114,7 +117,7 @@ export const DuplaSena: React.FC<DuplaSenaProps> = props => {
             </div>
 
             <div>
-              <Text size="4xl" style={{ marginBottom: 20 }}>
+              <Text size="xl" style={{ marginBottom: 20 }}>
                 2º Sorteio
               </Text>
               <table>
@@ -122,15 +125,18 @@ export const DuplaSena: React.FC<DuplaSenaProps> = props => {
                   style={{
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: 15
+                    justifyContent: 'center'
                   }}
                 >
                   {arrayOfDezenas2.map((dezena, index) => (
                     <DozenTr key={`${index * 3}`} style={{ marginTop: 0 }}>
                       <DozenTd
                         key={dezena}
-                        style={{ background: 'none', display: 'block' }}
+                        style={{
+                          background: 'none',
+                          display: 'block',
+                          marginLeft: 10
+                        }}
                       >
                         <Circle
                           css={{
